@@ -1,0 +1,27 @@
+{% extends 'catalog/home.html' %}
+{% load my_tags %}
+{% block content %}
+
+<div class="container">
+    <div class="row text-center">
+        {% for product in object_list %}
+        <div class="col-3">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ product.name }}</h4>
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title pricing-card-title">{{ product.purchase_price }}руб.</h2>
+                    <img src="{{ product.photo | media_filter }}" style="max-height: 200px; width: 100%; object-fit: cover;">
+                    <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                        <li>Описание: {{ product.description | default:"Описание отсутствует" | truncatechars:100  }}</li>
+                    </ul>
+                    <a role="button" href="{% url 'catalog:product_detail' product.pk %}" class="btn btn-primary">Посмотреть</a>
+                    <a role="button" href="{% url 'catalog:product_update' product.pk %}" class="btn btn-primary">Редактировать</a>
+                    <a role="button" href="{% url 'catalog:product_delete' product.pk %}" class="btn btn-primary">Удалить</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
