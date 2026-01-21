@@ -8,7 +8,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
 
-        category, _ = Category.objects.get_or_create(name='Смартфоны')
+        category, _ = Category.objects.get_or_create(name="Смартфоны")
         products = [
             {
                 "name": "Xiaomi",
@@ -47,8 +47,10 @@ class Command(BaseCommand):
         for product_data in products:
             product, created = Product.objects.get_or_create(**product_data)
             if created:
-                self.stdout.write(self.style.SUCCESS('Successfully added product: '
-                                                     f'{product.name}'))
+                self.stdout.write(
+                    self.style.SUCCESS("Successfully added product: " f"{product.name}")
+                )
             else:
-                self.stdout.write(self.style.WARNING('Product already exists: '
-                                                     f'{product.name}'))
+                self.stdout.write(
+                    self.style.WARNING("Product already exists: " f"{product.name}")
+                )
