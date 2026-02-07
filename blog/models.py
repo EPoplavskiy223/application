@@ -22,6 +22,7 @@ class BlogPost(models.Model):
         help_text="Дата публикации",
     )
     bool_blog = models.BooleanField(default=False, verbose_name="Статус публикации")
+
     view_cointer = models.PositiveIntegerField(
         verbose_name="Счетчик просмотров",
         help_text="Укажите количество просмотров",

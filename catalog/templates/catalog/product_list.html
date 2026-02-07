@@ -14,14 +14,18 @@
                     <h2 class="card-title pricing-card-title">{{ product.purchase_price }}руб.</h2>
                     <img src="{{ product.photo | media_filter }}" style="max-height: 200px; width: 100%; object-fit: cover;">
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                        <li>Описание: {{ product.description | default:"Описание отсутствует" | truncatechars:100  }}</li>
+                        <li>Описание: {{ product.description | default:"Описание отсутствует" | truncatechars:100 }}</li>
                     </ul>
-                    <a role="button" href="{% url 'catalog:product_detail' product.pk %}" class="btn btn-primary">Посмотреть</a>
-                    <a role="button" href="{% url 'catalog:product_update' product.pk %}" class="btn btn-primary">Редактировать</a>
-                    <a role="button" href="{% url 'catalog:product_delete' product.pk %}" class="btn btn-primary">Удалить</a>
+                    <div class="d-flex flex-column gap-1">
+                        <a href="{% url 'catalog:product_detail' product.pk %}" class="btn btn-primary btn-sm">Посмотреть</a>
+                        <a href="{% url 'catalog:product_update' product.pk %}" class="btn btn-primary btn-sm">Редактировать</a>
+                        <a href="{% url 'catalog:product_delete' product.pk %}" class="btn btn-danger btn-sm">Удалить</a>
+                    </div>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
+</div>
+
 {% endblock %}

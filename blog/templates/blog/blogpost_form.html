@@ -4,18 +4,19 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <form class="row" method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data">
                 <div class="card-body">
                     {% csrf_token %}
                     {{ form.as_p }}
                 </div>
                 <button type="submit" class="btn btn-primary">
                     {% if object %}
-                    Обновить
+                    Сохранить
                     {% else %}
-                    Добавить
+                    Создать
                     {% endif %}
                 </button>
+                <a href="{% url 'blog:blog_list' %}" class="btn btn-secondary">Отмена</a>
             </form>
         </div>
     </div>

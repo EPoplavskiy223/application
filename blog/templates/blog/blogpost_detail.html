@@ -1,5 +1,4 @@
 {% extends 'catalog/home.html' %}
-
 {% load my_tags %}
 {% block content %}
 
@@ -15,16 +14,16 @@
                     <img src="{{ object.photo | media_filter }}" style="max-height: 200px; width: 100%; object-fit: cover;">
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
                         <li>{{ object.content_blog }}</li>
-
                         <li>Дата выпуска: {{ object.date_publication }}</li>
                         <li>Статус {{ object.bool_blog }}</li>
-
                     </ul>
-                    <a role="button" href="{% url 'blog:blog_update' object.pk %}" class="btn btn-primary">Редактировать</a>
-                    <a role="button" href="{% url 'blog:blog_list' %}" class="btn btn-primary">Назад</a>
+                    <a href="{% url 'blog:blog_update' object.pk %}" class="btn btn-primary">Редактировать</a>
+                    <a href="{% url 'blog:blog_list' %}" class="btn btn-secondary">Назад</a>
                 </div>
             </div>
         </div>
         <div class="col-2"></div>
     </div>
+</div>
+
 {% endblock %}

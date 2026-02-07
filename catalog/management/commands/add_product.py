@@ -1,6 +1,8 @@
 import datetime
+
 from django.core.management.base import BaseCommand
-from catalog.models import Product, Category
+
+from catalog.models import Category, Product
 
 
 class Command(BaseCommand):

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Blog</title>
-        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body>
 {% include 'catalog/includes/inc_menu_up.html' %}
@@ -24,21 +24,22 @@
                 <div class="card-body">
                     <img src="{{ blog.photo | media_filter }}" style="max-height: 200px; width: 100%; object-fit: cover;">
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                        <li>Кратко: {{ blog.content_blog|default:"Блог отсутствует"|truncatechars:50 }}</li>
                     </ul>
-                    <li> Кратко: {{ blog.content_blog | default:"Блог отсутствует" | truncatechars:50 }} </li>
-                    <a role="button" href="{% url 'blog:blog_detail' blog.pk %}" class="btn btn-primary">Посмотреть</a>
-                    <a role="button" href="{% url 'blog:blog_update' blog.pk %}" class="btn btn-primary">Редактировать</a>
-                    <a role="button" href="{% url 'blog:blog_delete' blog.pk %}" class="btn btn-primary">Удалить</a>
+                    <div class="d-flex flex-column gap-1">
+                        <a href="{% url 'blog:blog_detail' blog.pk %}" class="btn btn-primary btn-sm">Посмотреть</a>
+                        <a href="{% url 'blog:blog_update' blog.pk %}" class="btn btn-primary btn-sm">Редактировать</a>
+                        <a href="{% url 'blog:blog_delete' blog.pk %}" class="btn btn-danger btn-sm">Удалить</a>
+                    </div>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
+</div>
 {% endblock %}
 
-
 {% include 'catalog/includes/inc_menu_down.html' %}
-
 
 </body>
 </html>

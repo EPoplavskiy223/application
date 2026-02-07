@@ -17,10 +17,12 @@
                         <li>Дата выпуска: {{ object.created_at }}</li>
                         <li>Категория: {{ object.category }}</li>
                     </ul>
-                    <a role="button" class="btn btn-primary">Купить</a>
-                    <a role="button" href=" {% url 'catalog:product_list' %}" class="btn btn-primary">Назад</a>
+                    <button type="button" class="btn btn-primary">Купить</button>
+                    <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary">Назад</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 {% endblock %}
