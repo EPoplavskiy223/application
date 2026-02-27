@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "catalog",
     "blog",
+    "users",
 ]
 
 MIDDLEWARE = [
@@ -115,6 +116,35 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
+COUNTRIES_ONLY = [
+    "RU",
+    "BY",
+    "KZ",
+    "AM",
+    "DE",
+    "FR",
+    "GB",
+    "IT",
+    "ES",
+    "PL",
+    "NL",
+    "CH",
+    "SE",
+    "AT",
+    "US",
+    "CA",
+    "MX",
+    "BR",
+    "AR",
+    "TR",
+    "CN",
+    "AE",
+    "TH",
+]
+
+COUNTRIES_FIRST = ["RU", "BY", "KZ"]
+COUNTRIES_FIRST_BREAK = "-" * 10
+
 TIME_ZONE = "UTC"
 
 USE_I18N = True
@@ -134,3 +164,21 @@ STATIC_URL = "static/"
 MEDIA_URL = "media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+AUTH_USER_MODEL = "users.User"
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.yandex.ru"
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = os.environ.get("E_EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("E_EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FILE_STORAGE = EMAIL_HOST_USER
