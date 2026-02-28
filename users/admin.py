@@ -9,5 +9,3 @@ class UserAdmin(admin.ModelAdmin):
         "id",
         "email",
     )
-    list_filter = ("email",)
-    search_fields = ("email",)

@@ -18,6 +18,7 @@ class ProductForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Product
         fields = "__all__"
+        exclude = ("owner",)
 
     forbidden_words = [
         "казино",
@@ -59,3 +60,9 @@ class ProductForm(StyleFormMixin, ModelForm):
             raise ValidationError("Цена не может быть меньше нуля")
         else:
             return price
+
+
+class ProductModeratorForm(StyleFormMixin, ModelForm):
+    class Meta:
+        model = Product
+        fields = ("bool_publication",)

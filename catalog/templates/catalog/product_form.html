@@ -17,6 +17,9 @@
                     {% endif %}
                 </button>
                 <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary">Отмена</a>
+                {% if perms.catalog.can_unpublish_product and object %}
+                    <a href="{% url 'catalog:product_delete' product.pk %}" class="btn btn-danger btn-sm">Удалить</a>
+                {% endif %}
             </form>
         </div>
     </div>
