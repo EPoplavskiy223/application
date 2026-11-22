@@ -1,0 +1,28 @@
+{% extends 'catalog/home.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    {% if object %}
+                    Сохранить
+                    {% else %}
+                    Создать
+                    {% endif %}
+                </button>
+                <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary">Отмена</a>
+                {% if perms.catalog.can_unpublish_product and object %}
+                    <a href="{% url 'catalog:product_delete' product.pk %}" class="btn btn-danger btn-sm">Удалить</a>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

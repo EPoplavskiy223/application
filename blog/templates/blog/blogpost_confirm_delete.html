@@ -1,0 +1,39 @@
+{% extends 'catalog/home.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card border-danger mt-5">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="card-title mb-0">
+                        Подтверждение удаления
+                    </h4>
+                </div>
+                <div class="card-body text-center">
+                    <p class="card-text fs-5">
+                        Вы действительно хотите удалить <strong>"{{ object.title }}"</strong>?
+                    </p>
+                    <p class="text-muted">
+                        Это действие нельзя будет отменить.
+                    </p>
+
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                            <button type="submit" class="btn btn-danger">
+                                Удалить
+                            </button>
+                            <a href="{% url 'blog:blog_list' %}" class="btn btn-outline-secondary">
+                                Отменить
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
